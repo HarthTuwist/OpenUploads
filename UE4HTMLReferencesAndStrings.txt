@@ -1,0 +1,116 @@
+////////////////////.cpp
+
+// Fill out your copyright notice in the Description page of Project Settings.
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
+#include "MyActor.generated.h"
+
+UCLASS()
+class IPV6CONNECTTEST_API AMyActor : public AActor
+{
+	GENERATED_BODY()
+	
+public:	
+	// Sets default values for this actor's properties
+	AMyActor();
+
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
+public:	
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "HTML5")
+		void HandleString(const FString& String);
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "HTML5")
+		void HandleStringInt(const FString& String, int Banana1, AActor* Banana2, int& Banana3, const int& Banana4, const AActor* Banana5);
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "HTML5")
+		AActor* HandleBananas(const FString& String, int Banana1, AActor*& Banana2, int& Banana3, const int& Banana4, const AActor* Banana5, TArray<AActor*>& ChildActors, const TArray<AActor*>& ChildActors2);
+
+	UPROPERTY(BlueprintReadOnly)
+		FString ReadedString;
+	UFUNCTION(BlueprintCallable, Category = "HTML5")
+		FString CallString();
+
+	UFUNCTION(BlueprintCallable, Category = "HTML5")
+		void DoNothing();
+
+};
+
+
+
+
+
+
+
+////////////////////.h
+
+
+// Fill out your copyright notice in the Description page of Project Settings.
+
+
+#include "MyActor.h"
+
+// Sets default values
+AMyActor::AMyActor()
+{
+ 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	PrimaryActorTick.bCanEverTick = true;
+
+}
+
+// Called when the game starts or when spawned
+void AMyActor::BeginPlay()
+{
+	Super::BeginPlay();
+	
+}
+
+// Called every frame
+void AMyActor::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+}
+
+FString AMyActor::CallString()
+{
+
+	char* StringPtr;
+	char StringArray[20];
+
+	StringArray[4] = 'a';
+	StringArray[5] = 'b';
+	StringArray[6] = 'c';
+	StringArray[7] = 'd';
+
+	StringPtr = StringArray;
+
+	return FString(StringArray);
+}
+
+void AMyActor::DoNothing()
+{
+	ReadedString = FString(TEXT("Banana"));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
